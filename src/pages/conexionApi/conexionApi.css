@@ -37,3 +37,6 @@
     margin: 20px;
     display: inline-table;
   }
+  .ocuparTodo {
+    height: 97vh;
+  }

@@ -50,8 +50,10 @@ function Api() {
 
                     
                     <div className='fondo text-center'>
-                         {!DrinksData.map(drink => {
+                        {DrinksData !== null ? (
+                         DrinksData.map(drink => {
                                             return (
+                                                
                                             <div  className='ordernarDiv'>
                                             <p>{drink.strDrink}</p>
                                             <img  src={drink.strDrinkThumb} height='300px;' alt="Happy Drink!"/>
@@ -77,7 +79,16 @@ function Api() {
                                                     </span>
                                             }
                                             </div>)
-                                        })}
+                                        })
+                                    ) : 
+                                    (
+                                        <div className='ocuparTodo'>
+                                        <div  className=' ordernarDiv'>
+                                            <span>no hay nada :(</span>
+                                        </div>
+                                        </div>
+                                    )
+                                    }
                         </div>
                         </div>
     );
