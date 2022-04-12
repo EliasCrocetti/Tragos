@@ -2,14 +2,14 @@ import axios from 'axios';
 import { useState , useEffect} from 'react';
 import {serverUrl} from '../../constants/filterapi'
 import './conexionApi.css'; 
+import  BarraCheckBox from '../../components/BarraBusqueda/barrabusqueda';
 
 function Api() {
 
     const [loading, setLoading] = useState(false)
     const [DrinksData, setDrinksData] = useState([])
     const [nombreTrago, setnombreTrago] = useState([])
-
-    
+   
     const handleChange = (event) => {
         console.log('is changing')
         setnombreTrago(event.target.value)
@@ -32,8 +32,8 @@ function Api() {
 
     return (
             <div>
-                    <div className='fondo text-center'>
-                        <input  className="placeholder-wave ajustarInput" placeholder="Escriba nombre del trago..." onChange={handleChange}/>
+                    <div className='fondo text-center barraFija'>
+                        <input  className="placeholder-wave ajustarInput" placeholder="Escriba nombre del trago..." onChange={handleChange} onBlur={handleChange} />
                         &nbsp;
                         <button type="button" className=" ajustarBoton" onClick={getDrink}> {
                                     loading ? (
@@ -47,26 +47,37 @@ function Api() {
                                     )
                                 }</button>
                     </div>
+
                     
                     <div className='fondo text-center'>
-                         {DrinksData.map(drink => {
+                         {!DrinksData.map(drink => {
                                             return (
-                                                
                                             <div  className='ordernarDiv'>
-
-                                            <span>
-                                                <img  src={drink.strDrinkThumb} height='300px;'></img>
-                                                <p>{drink.strDrink}</p>
-                                                <details>
-                                                <summary>Instrucciones en ingles:</summary>
-                                                <p>{drink.strInstructions}</p>
-                                                </details>
-
-                                            </span>
+                                            <p>{drink.strDrink}</p>
+                                            <img  src={drink.strDrinkThumb} height='300px;' alt="Happy Drink!"/>
+                                            
+                                            {
+                                                drink.strInstructionsES !== null &&
+                                                    <span>
+                                                        <p>{drink.strDrink}</p>
+                                                        <details>
+                                                        <summary>Instrucciones en Español:</summary>
+                                                        <p>{drink.strInstructionsES}</p>
+                                                        </details>
+                                                    </span>
+                                                
+                                            }
+                                            {
+                                                drink.strInstructions !== null &&
+                                                    <span>
+                                                        <details>
+                                                        <summary>English Instructions</summary>
+                                                        <p>{drink.strInstructions}</p>
+                                                        </details>
+                                                    </span>
+                                            }
                                             </div>)
                                         })}
-                                   
-                                
                         </div>
                         </div>
     );

@@ -2,6 +2,10 @@
   margin: 0px;
   padding: 0px;
 }
+  .barraFija{
+    position: sticky;
+    top: 0px;
+  }
 
   .ajustarBoton{
     background-color: #007bff;
