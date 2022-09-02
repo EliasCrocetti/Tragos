@@ -1,11 +1,15 @@
 import './barrabusqueda.css';
 import { Checkbox } from 'pretty-checkbox-react';
 
-function BarraCheckBox() {
+function BarraCheckBox(props) {
 
+    const { children } = props
+
+    console.log(props, "BarraCheckBox")
+    
     return (
         <div>
-            Checkbox: <input type="checkbox" id="myCheck"/> 
+            <Checkbox title='barra de busqueda'  value="" {...props}>{children}</Checkbox>;
         </div>
       );
 }

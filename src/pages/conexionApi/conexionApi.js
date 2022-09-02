@@ -2,7 +2,8 @@ import axios from 'axios';
 import { useState , useEffect} from 'react';
 import {serverUrl} from '../../constants/filterapi'
 import './conexionApi.css'; 
-import  BarraCheckBox from '../../components/BarraBusqueda/barrabusqueda';
+//import  BarraCheckBox from '../../components/BarraBusqueda/barrabusqueda';
+//import { Checkbox } from 'pretty-checkbox-react';
 
 function Api() {
 
@@ -22,9 +23,9 @@ function Api() {
         //chinar
         setDrinksData(response.data.drinks)
         console.log('respuesta del servidor: DrinksData',  response)
-        setLoading(false)
-                
+        setLoading(false)     
       }
+
       
     useEffect(() => {
         getDrink()
@@ -47,8 +48,6 @@ function Api() {
                                     )
                                 }</button>
                     </div>
-
-                    
                     <div className='fondo text-center'>
                         {DrinksData !== null ? (
                          DrinksData.map(drink => {
@@ -84,7 +83,7 @@ function Api() {
                                     (
                                         <div className='ocuparTodo'>
                                         <div  className=' ordernarDiv'>
-                                            <span>no hay nada :(</span>
+                                            <span>No tragos con ese nombre :(</span>
                                         </div>
                                         </div>
                                     )
